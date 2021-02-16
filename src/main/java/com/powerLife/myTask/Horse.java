@@ -6,8 +6,8 @@ public class Horse {
     private final int verStartPos;
     private int nowHorPos;
     private int nowVerPos;
-    private static int tmpHorPos = 0;
-    private static int tmpVerPos = 0;
+    private static int tmpHorPos;
+    private static int tmpVerPos;
 
     public Horse(int horStartPos, int verStartPos) {
         this.horStartPos = horStartPos;
