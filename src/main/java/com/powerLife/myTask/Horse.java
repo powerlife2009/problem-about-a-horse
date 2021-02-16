@@ -2,12 +2,21 @@ package com.powerLife.myTask;
 
 public class Horse {
 
-    private final int horStartPos;
-    private final int verStartPos;
-    private int nowHorPos;
-    private int nowVerPos;
+    /**
+     * Временные статические переменные, для поиска верного хода
+     */
     private static int tmpHorPos;
     private static int tmpVerPos;
+    /**
+     * Стартовые позиции коня, задаются на старте программы
+     */
+    private final int horStartPos;
+    private final int verStartPos;
+    /**
+     * Позиции на которых находится конь
+     */
+    private int nowHorPos;
+    private int nowVerPos;
 
     public Horse(int horStartPos, int verStartPos) {
         this.horStartPos = horStartPos;
@@ -50,85 +59,109 @@ public class Horse {
         this.nowHorPos = nowHorPos;
     }
 
-    public void setNowVerPos(int nowVerPos) {
-        this.nowVerPos = nowVerPos;
-    }
-
     public int getNowVerPos() {
         return nowVerPos;
     }
 
+    public void setNowVerPos(int nowVerPos) {
+        this.nowVerPos = nowVerPos;
+    }
+
+    /**
+     * Возвращает коня, на место в случаях неудачных проверок
+     */
+    public void returnHorseOnNowPosition() {
+        setTmpHorPos(getNowHorPos());
+        setTmpVerPos(getNowVerPos());
+    }
 
 
     public enum Position {
-        ONE{
+        ONE(1) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 System.out.println("Начало с позиции " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
-                System.out.println("=============================");
+                //System.out.println("=============================");
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 2);
-                System.out.println("Ход первый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход первый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        TWO{
+        TWO(2) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 2);
-                System.out.println("Ход второй " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход второй " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        THREE{
+        THREE(3) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 2);
-                System.out.println("Ход третий " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход третий " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        FOUR{
+        FOUR(4) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 2);
-                System.out.println("Ход четвертый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход четвертый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        FIVE{
+        FIVE(5) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 1);
-                System.out.println("Ход пятый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход пятый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        SIX{
+        SIX(6) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 1);
-                System.out.println("Ход шестой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход шестой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        SEVEN{
+        SEVEN(7) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 1);
-                System.out.println("Ход седьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход седьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
-        EIGHT{
+        EIGHT(8) {
             @Override
-            public void setPosition(){
+            public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 1);
-                System.out.println("Ход восьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
+                //System.out.println("Ход восьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         };
+        private final Integer numberPos;
+
+        Position(int numberPos) {
+            this.numberPos = numberPos;
+        }
+
+        public Integer getNumberPos() {
+            return numberPos;
+        }
 
         abstract void setPosition();
+
+        public static void horseMove(int numberMove) {
+            for(Position position : values()){
+                if(position.numberPos.equals(numberMove)) {
+                    position.setPosition();
+                }
+            }
+        }
     }
 }
 

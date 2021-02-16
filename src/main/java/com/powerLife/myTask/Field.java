@@ -2,7 +2,7 @@ package com.powerLife.myTask;
 
 public class Field {
 
-    private final int[][] field = new int[7][7];
+    private final int[][] field = new int[8][8];
     private Horse horse;
     private int quantityCells = 63;
 
