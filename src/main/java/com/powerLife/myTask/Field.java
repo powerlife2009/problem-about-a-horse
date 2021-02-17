@@ -8,7 +8,7 @@ public class Field {
     private final int[][] field = new int[8][8];
 
     /**
-     * Тот самый виновник торжества
+     * Тот самый конь
      */
     private Horse horse;
 
@@ -20,6 +20,14 @@ public class Field {
 
     public int[][] getField() {
         return field;
+    }
+
+    public void occupyCell(int hor, int ver) {
+        getField()[hor][ver] = 1;
+    }
+
+    public void decrementQuantityCells() {
+        this.quantityCells--;
     }
 
     public Horse getHorse() {

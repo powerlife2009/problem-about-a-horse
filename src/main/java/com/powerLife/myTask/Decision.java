@@ -14,27 +14,21 @@ public class Decision {
         this.horse = horse;
     }
 
-    // TODO: 16.02.2021 Пересмотреть и доработать красоту данного ужаса
     public void goHorse() {
         Map<Integer, Integer> moveRecords = new HashMap<>();
         while (field.getQuantityCells() != 0) {
             for (Horse.Position position : Horse.Position.values()) {
                 position.setPosition();
                 if (threeIfCheck(Horse.getTmpHorPos(), Horse.getTmpVerPos())) {
-                    moveRecords.put(position.getNumberPos(), checkTwoLevel());
+                    moveRecords.put(position.getNumberPos(), numberOfFutureMoves());
                 }
                 horse.returnHorseOnNowPosition();
             }
 
-            Horse.Position.horseMove(rightMoving(moveRecords));
-            horse.setNowHorPos(Horse.getTmpHorPos());
-            horse.setNowVerPos(Horse.getTmpVerPos());
-            field.getField()[horse.getNowHorPos()][horse.getNowVerPos()] = 1;
-            System.out.println("Позиция коня: " + "горизонталь: " + horse.getNowHorPos() + " " + "вертикаль: " + horse.getNowVerPos());
-            field.showField();
-
+            hatTrick(moveRecords);
             moveRecords.clear();
-            field.setQuantityCells(field.getQuantityCells() - 1);
+            field.occupyCell(horse.getNowHorPos(), horse.getNowVerPos());
+            field.decrementQuantityCells();
         }
     }
 
@@ -60,10 +54,11 @@ public class Decision {
     /**
      * Метод подсчитывает количество возможных ходов, проверяя каждый методом threeIfCheck
      * Локальные переменные horPos и verPos для сохранения позиции коня, и возврате его на место
-     * после поиска ходов
+     * после проверки хода
+     *
      * @return количество count
      */
-    public int checkTwoLevel() {
+    public int numberOfFutureMoves() {
         int count = 0;
         for (Horse.Position position : Horse.Position.values()) {
             int horPos = Horse.getTmpHorPos();
@@ -78,15 +73,16 @@ public class Decision {
         return count;
     }
 
-    public int rightMoving(Map<Integer, Integer> moves) {
-        int move = 0;
+    public void hatTrick(Map<Integer, Integer> moves) {
+        int move;
         for (Map.Entry<Integer, Integer> item : moves.entrySet()) {
             if (item.getValue().equals(Collections.min(moves.values()))) {
                 move = item.getKey();
+                Horse.Position.go(move);
+                horse.moveHorseOnNewPosition();
                 break;
             }
         }
-        return move;
     }
 }
 

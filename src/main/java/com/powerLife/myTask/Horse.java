@@ -68,11 +68,19 @@ public class Horse {
     }
 
     /**
-     * Возвращает коня, на место в случаях неудачных проверок
+     * Возвращает коня, на место после проверок
      */
     public void returnHorseOnNowPosition() {
         setTmpHorPos(getNowHorPos());
         setTmpVerPos(getNowVerPos());
+    }
+
+    /**
+     * Перемещает коня на новое место
+     */
+    public void moveHorseOnNewPosition() {
+        setNowHorPos(getTmpHorPos());
+        setNowVerPos(getTmpVerPos());
     }
 
 
@@ -145,7 +153,7 @@ public class Horse {
 
         abstract void setPosition();
 
-        public static void horseMove(int numberMove) {
+        public static void go(int numberMove) {
             for(Position position : values()){
                 if(position.numberPos.equals(numberMove)) {
                     position.setPosition();
