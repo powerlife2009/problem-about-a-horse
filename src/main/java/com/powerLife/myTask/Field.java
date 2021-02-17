@@ -2,8 +2,20 @@ package com.powerLife.myTask;
 
 public class Field {
 
+    /**
+     * Поле 8 х 8
+     */
     private final int[][] field = new int[8][8];
+
+    /**
+     * Тот самый виновник торжества
+     */
     private Horse horse;
+
+    /**
+     * Количество ранее не занятых клеток,
+     * 64-я = конь
+     */
     private int quantityCells = 63;
 
     public int[][] getField() {
@@ -28,9 +40,9 @@ public class Field {
     }
 
     public void showField() {
-        for (int i = 0; i < field.length; i++) {
+        for (int[] ints : field) {
             for (int j = 0; j < field.length; j++) {
-                System.out.print(field[i][j]);
+                System.out.print(ints[j] + " ");
             }
             System.out.println();
         }

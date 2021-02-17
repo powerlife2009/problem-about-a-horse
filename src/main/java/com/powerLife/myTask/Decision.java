@@ -14,14 +14,7 @@ public class Decision {
         this.horse = horse;
     }
 
-    public Field getField() {
-        return field;
-    }
-
-    public Horse getHorse() {
-        return horse;
-    }
-
+    // TODO: 16.02.2021 Пересмотреть и доработать красоту данного ужаса
     public void goHorse() {
         Map<Integer, Integer> moveRecords = new HashMap<>();
         while (field.getQuantityCells() != 0) {
@@ -33,21 +26,25 @@ public class Decision {
                 horse.returnHorseOnNowPosition();
             }
 
-            int move = rightMoving(moveRecords);
-            // Наконец-то конь пошёл
-            Horse.Position.horseMove(move);
+            Horse.Position.horseMove(rightMoving(moveRecords));
             horse.setNowHorPos(Horse.getTmpHorPos());
             horse.setNowVerPos(Horse.getTmpVerPos());
             field.getField()[horse.getNowHorPos()][horse.getNowVerPos()] = 1;
-            moveRecords.clear();
             System.out.println("Позиция коня: " + "горизонталь: " + horse.getNowHorPos() + " " + "вертикаль: " + horse.getNowVerPos());
-            System.out.println("------------------------");
-            System.out.println("Осталось пустых клеток: " + field.getQuantityCells());
             field.showField();
+
+            moveRecords.clear();
             field.setQuantityCells(field.getQuantityCells() - 1);
         }
     }
 
+    /**
+     * Метод возвращает true если возможный ход находится в пределах поля,
+     * и клетка не занималась ранее.
+     * @param checkedHorPos горизонтальная позиция
+     * @param checkedVerPos вертикальная позиция
+     * @return true or false
+     */
     public boolean threeIfCheck(int checkedHorPos, int checkedVerPos) {
         boolean check = false;
         if (checkedHorPos >= 0 && checkedHorPos <= 7) {
@@ -60,6 +57,12 @@ public class Decision {
         return check;
     }
 
+    /**
+     * Метод подсчитывает количество возможных ходов, проверяя каждый методом threeIfCheck
+     * Локальные переменные horPos и verPos для сохранения позиции коня, и возврате его на место
+     * после поиска ходов
+     * @return количество count
+     */
     public int checkTwoLevel() {
         int count = 0;
         for (Horse.Position position : Horse.Position.values()) {

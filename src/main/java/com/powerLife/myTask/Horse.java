@@ -80,11 +80,8 @@ public class Horse {
         ONE(1) {
             @Override
             public void setPosition() {
-                System.out.println("Начало с позиции " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
-                //System.out.println("=============================");
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 2);
-                //System.out.println("Ход первый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         TWO(2) {
@@ -92,7 +89,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 2);
-                //System.out.println("Ход второй " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         THREE(3) {
@@ -100,7 +96,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 2);
-                //System.out.println("Ход третий " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         FOUR(4) {
@@ -108,7 +103,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 1);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 2);
-                //System.out.println("Ход четвертый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         FIVE(5) {
@@ -116,7 +110,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 1);
-                //System.out.println("Ход пятый " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         SIX(6) {
@@ -124,7 +117,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() + 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 1);
-                //System.out.println("Ход шестой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         SEVEN(7) {
@@ -132,7 +124,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() + 1);
-                //System.out.println("Ход седьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         },
         EIGHT(8) {
@@ -140,7 +131,6 @@ public class Horse {
             public void setPosition() {
                 Horse.setTmpHorPos(Horse.getTmpHorPos() - 2);
                 Horse.setTmpVerPos(Horse.getTmpVerPos() - 1);
-                //System.out.println("Ход восьмой " + Horse.getTmpHorPos() + " " + Horse.getTmpVerPos());
             }
         };
         private final Integer numberPos;
