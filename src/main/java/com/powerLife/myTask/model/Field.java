@@ -1,4 +1,4 @@
-package com.powerLife.myTask;
+package com.powerLife.myTask.model;
 
 public class Field {
 
@@ -6,11 +6,6 @@ public class Field {
      * Поле 8 х 8
      */
     private final int[][] field = new int[8][8];
-
-    /**
-     * Тот самый конь
-     */
-    private Horse horse;
 
     /**
      * Количество ранее не занятых клеток,
@@ -30,22 +25,18 @@ public class Field {
         this.quantityCells--;
     }
 
-    public Horse getHorse() {
-        return horse;
+    public void setHorse(int h, int v) {
+        this.field[h][v] = 1;
     }
 
-    public void setHorse(Horse horse) {
-        this.horse = horse;
-        this.field[horse.getHorStartPos()][horse.getVerStartPos()] = 1;
+    public void removeHorse(int h, int v) {
+        this.field[h][v] = 0;
     }
 
     public int getQuantityCells() {
         return quantityCells;
     }
 
-    public void setQuantityCells(int quantityCells) {
-        this.quantityCells = quantityCells;
-    }
 
     public void showField() {
         for (int[] ints : field) {

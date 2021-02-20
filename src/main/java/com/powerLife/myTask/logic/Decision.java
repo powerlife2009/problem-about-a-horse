@@ -1,25 +1,37 @@
-package com.powerLife.myTask;
+package com.powerLife.myTask.logic;
+
+import com.powerLife.myTask.model.Field;
+import com.powerLife.myTask.model.Horse;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
 
 public class Decision {
 
     private final Field field;
     private final Horse horse;
 
-    public Decision(Field field, Horse horse) {
-        this.field = field;
-        this.horse = horse;
+    public Decision() {
+        this.field = new Field();
+        this.horse = new Horse();
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public Horse getHorse() {
+        return horse;
     }
 
     public void goHorse() {
         Map<Integer, Integer> moveRecords = new HashMap<>();
-        while (field.getQuantityCells() != 0) {
             for (Horse.Position position : Horse.Position.values()) {
                 position.setPosition();
-                if (threeIfCheck(Horse.getTmpHorPos(), Horse.getTmpVerPos())) {
+                if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
                     moveRecords.put(position.getNumberPos(), numberOfFutureMoves());
                 }
                 horse.returnHorseOnNowPosition();
@@ -27,9 +39,7 @@ public class Decision {
 
             hatTrick(moveRecords);
             moveRecords.clear();
-            field.occupyCell(horse.getNowHorPos(), horse.getNowVerPos());
-            field.decrementQuantityCells();
-        }
+            field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
     }
 
     /**
@@ -61,14 +71,13 @@ public class Decision {
     public int numberOfFutureMoves() {
         int count = 0;
         for (Horse.Position position : Horse.Position.values()) {
-            int horPos = Horse.getTmpHorPos();
-            int verPos = Horse.getTmpVerPos();
+            int horPos = Horse.getTmpPosH();
+            int verPos = Horse.getTmpPosV();
             position.setPosition();
-            if (threeIfCheck(Horse.getTmpHorPos(), Horse.getTmpVerPos())) {
+            if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
                 count++;
             }
-            Horse.setTmpHorPos(horPos);
-            Horse.setTmpVerPos(verPos);
+            Horse.setTmpPos(horPos,verPos);
         }
         return count;
     }
