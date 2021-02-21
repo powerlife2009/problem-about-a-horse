@@ -5,7 +5,7 @@ public class Field {
     /**
      * Поле 8 х 8
      */
-    private final int[][] field = new int[8][8];
+    private int[][] field = new int[8][8];
 
     /**
      * Количество ранее не занятых клеток,
@@ -18,10 +18,7 @@ public class Field {
     }
 
     public void occupyCell(int hor, int ver) {
-        getField()[hor][ver] = 1;
-    }
-
-    public void decrementQuantityCells() {
+        this.field[hor][ver] = 1;
         this.quantityCells--;
     }
 
@@ -37,11 +34,15 @@ public class Field {
         return quantityCells;
     }
 
+    public void resetField() {
+        this.field = new int[8][8];
+        this.quantityCells = 63;
+    }
 
-    public void showField() {
-        for (int[] ints : field) {
-            for (int j = 0; j < field.length; j++) {
-                System.out.print(ints[j] + " ");
+    public void show() {
+        for(int i = 0; i < 8; i++) {
+            for(int j = 0; j < 8; j++) {
+                System.out.print(field[i][j]);
             }
             System.out.println();
         }

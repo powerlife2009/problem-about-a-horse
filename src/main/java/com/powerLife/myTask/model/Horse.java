@@ -73,7 +73,7 @@ public class Horse {
 
     public void setHorseOnStartPosition(int h, int v) {
         setNowPos(h, v);
-        setTmpPos(getNowPosH(), getNowPosV());
+        setTmpPos(h, v);
     }
 
     public enum Position {

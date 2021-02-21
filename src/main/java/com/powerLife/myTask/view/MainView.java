@@ -4,11 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class MainView extends JFrame {
+
+public class MainView extends JFrame{
 
     private final JPanel genJPanel = new JPanel(new BorderLayout());
-    private final JPanel board = new JPanel(new GridLayout(8, 8));
-    private final JPanel[][] squares = new JPanel[8][8];
+    private JPanel board = new JPanel(new GridLayout(8, 8));
+    private JPanel[][] squares = new JPanel[8][8];
     private final JToolBar tools = new JToolBar();
     private final JButton setHor = new JButton("Setup Horse");
     private final JButton start = new JButton("Start");
@@ -87,7 +88,7 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
-    public void killCell(int h, int v) {
+    public void markCell(int h, int v) {
         squares[h][v].removeAll();
         squares[h][v].add(new JLabel(mark));
         setVisible(true);
@@ -108,5 +109,14 @@ public class MainView extends JFrame {
 
     public JButton getAbout() {
         return about;
+    }
+
+    public void getNewBoard() {
+        genJPanel.remove(board);
+        this.board = new JPanel(new GridLayout(8, 8));
+        this.squares = new JPanel[8][8];
+        setBoard();
+        genJPanel.add(board);
+        setVisible(true);
     }
 }

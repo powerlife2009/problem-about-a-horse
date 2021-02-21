@@ -7,13 +7,11 @@ import com.powerLife.myTask.view.MainView;
 
 public class App {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         var chess2 = new MainView();
         var decision = new Decision();
         var controller = new Controller(decision, chess2);
-        //controller.setHorseStartPosition(1,1);
-        controller.setHorseOnBoard();
         controller.initController();
 
     }

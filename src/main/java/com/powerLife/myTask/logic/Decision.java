@@ -6,7 +6,7 @@ import com.powerLife.myTask.model.Horse;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
+
 
 
 public class Decision {
@@ -40,6 +40,7 @@ public class Decision {
             hatTrick(moveRecords);
             moveRecords.clear();
             field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
+            field.show();
     }
 
     /**
