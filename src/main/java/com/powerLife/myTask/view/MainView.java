@@ -61,7 +61,9 @@ public class MainView extends JFrame{
     public void setToolBar() {
         tools.setFloatable(false);
         tools.add(setHor);
+        start.setEnabled(false);
         tools.add(start);
+        stop.setEnabled(false);
         tools.add(stop);
         tools.addSeparator();
         tools.add(about);
