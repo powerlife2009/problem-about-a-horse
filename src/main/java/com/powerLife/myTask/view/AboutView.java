@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class AboutView extends JDialog{
 
-    public AboutView() {
+    public AboutView() { // TODO: 24.02.2021 Реализовать содержимое окна
         setTitle("About Program");
         setSize(400,250);
         setResizable(false);

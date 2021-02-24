@@ -16,10 +16,10 @@ public class Controller {
     private final MainView mainView;
     private final Timer timer;
 
-    public Controller(Decision d, MainView c) {
-        this.decision = d;
-        this.mainView = c;
-        this.timer = new Timer(100, e -> eee());
+    public Controller(Decision decision, MainView mainView) {
+        this.decision = decision;
+        this.mainView = mainView;
+        this.timer = new Timer(500, e -> eee());
     }
 
     public Decision getDecision() {
@@ -32,16 +32,24 @@ public class Controller {
 
     public void run() {
         timer.restart();
-        mainView.getSetHor().setEnabled(false);
-        mainView.getStart().setEnabled(false);
-        mainView.getStop().setEnabled(true);
     }
 
+    /**
+     * Удаляю коня с поля, присваивая клетке значение 0 и увеличивая количество свободных клеток,
+     * затем присваиваю коню новые позиции
+     *
+     * @param h по горизонтали
+     * @param v по вертикали
+     */
     public void setHorseStartPosition(int h, int v) {
         decision.getField().removeHorse(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
         decision.getHorse().setHorseOnStartPosition(h, v);
     }
 
+    /**
+     * Занимаю клетку на поле, присваивая ей значение 1,
+     * затем устанавливаю коня на поле в VIEW
+     */
     public void setHorseOnBoard() {
         decision.getField().occupyCell(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
         mainView.setHorse(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
@@ -55,7 +63,12 @@ public class Controller {
     }
 
     public void eee() { // TODO: 22.02.2021 Придумать название для метода
+        mainView.getSetHor().setEnabled(false); // TODO: 24.02.2021 Слишком много SetEnabled вынести
+        mainView.getStart().setEnabled(false); // убрать
+        mainView.getStop().setEnabled(true); // убрать
         if (decision.getField().getQuantityCells() != 0) {
+
+
             mainView.markCell(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
 
             decision.goHorse();
@@ -63,16 +76,14 @@ public class Controller {
             mainView.setHorse(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
         } else {
             timer.stop();
-            mainView.getSetHor().setEnabled(true);
-            mainView.getStop().setEnabled(false);
+            mainView.getSetHor().setEnabled(true); // убрать
+            mainView.getStop().setEnabled(false); // убрать
         }
     }
 
     public void newBoard() {
-        mainView.getNewBoard();
-        decision.getField().resetField();
-        timer.stop();
-        mainView.getSetHor().setEnabled(true);
-        mainView.getStop().setEnabled(false);
+        mainView.getNewBoard();                // получаю новое поле в VIEW
+        decision.getField().resetField();      // очищаю клетки в FIELD
+        timer.stop();                          // останавливаю визуализацию
     }
 }

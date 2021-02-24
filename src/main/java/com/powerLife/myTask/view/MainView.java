@@ -4,19 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 
 
+public class MainView extends JFrame {
 
-public class MainView extends JFrame{
-
-    private final JPanel genJPanel = new JPanel(new BorderLayout());
-    private JPanel board = new JPanel(new GridLayout(8, 8));
-    private JPanel[][] squares = new JPanel[8][8];
+    private final JPanel genJPanel = new JPanel(new BorderLayout()); // TODO: 25.02.2021 переименовать 
     private final JToolBar tools = new JToolBar();
     private final JButton setHor = new JButton("Setup Horse");
     private final JButton start = new JButton("Start");
     private final JButton stop = new JButton("Stop");
     private final JButton about = new JButton("About");
-    private final ImageIcon horse = new ImageIcon("src/main/resources/horse2.png");
-    private final ImageIcon mark = new ImageIcon("src/main/resources/galka.png");
+    private final ImageIcon horse = new ImageIcon("src/main/resources/horse.png");
+    private final ImageIcon mark = new ImageIcon("src/main/resources/marker.png");
+    private final JPanel board = new JPanel(new GridLayout(8, 8));
+    private final JPanel[][] squares = new JPanel[8][8];
 
     public MainView() {
         initView();
@@ -39,7 +38,7 @@ public class MainView extends JFrame{
         setVisible(true);
     }
 
-    public void setGenJPanel() {
+    public void setGenJPanel() { // TODO: 25.02.2021 переименовать метод 
         genJPanel.add(tools, BorderLayout.PAGE_START);
         genJPanel.add(board);
     }
@@ -59,24 +58,22 @@ public class MainView extends JFrame{
     }
 
     public void setToolBar() {
-        tools.setFloatable(false);
-        tools.add(setHor);
         start.setEnabled(false);
-        tools.add(start);
         stop.setEnabled(false);
+
+        tools.setFloatable(false);
+
+        tools.add(setHor);
+        tools.add(start);
         tools.add(stop);
         tools.addSeparator();
         tools.add(about);
-        tools.addSeparator();
     }
 
     public void removeHorse(int h, int v) {
-
         squares[h][v].repaint();
         squares[h][v].revalidate();
         squares[h][v].removeAll();
-        squares[h][v].setVisible(true);
-
         setVisible(true);
     }
 
@@ -90,7 +87,20 @@ public class MainView extends JFrame{
         squares[h][v].add(new JLabel(mark));
         setVisible(true);
     }
-
+    
+    public void getNewBoard() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                squares[i][j].repaint();
+                squares[i][j].revalidate();
+                squares[i][j].removeAll();
+                board.add(squares[i][j]);
+            }
+        }
+        setHor.setEnabled(true);
+        stop.setEnabled(false);
+        setVisible(true);
+    }
 
     public JButton getSetHor() {
         return setHor;
@@ -106,14 +116,5 @@ public class MainView extends JFrame{
 
     public JButton getAbout() {
         return about;
-    }
-
-    public void getNewBoard() {
-        genJPanel.remove(board);
-        this.board = new JPanel(new GridLayout(8, 8));
-        this.squares = new JPanel[8][8];
-        setBoard();
-        genJPanel.add(board);
-        setVisible(true);
     }
 }

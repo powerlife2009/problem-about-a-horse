@@ -12,10 +12,12 @@ public class Decision {
 
     private final Field field;
     private final Horse horse;
+    private final Map<Integer, Integer> moveRecords;
 
     public Decision() {
         this.field = new Field();
         this.horse = new Horse();
+        this.moveRecords = new HashMap<>();
     }
 
     public Field getField() {
@@ -27,7 +29,7 @@ public class Decision {
     }
 
     public void goHorse() {
-        Map<Integer, Integer> moveRecords = new HashMap<>();
+// TODO: 24.02.2021 очень не красиво, разгрести
         for (Horse.Position position : Horse.Position.values()) {
             position.setPosition();
             if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
@@ -69,10 +71,12 @@ public class Decision {
      * @return количество count
      */
     public int numberOfFutureMoves() {
+        int horPos;
+        int verPos;
         int count = 0;
         for (Horse.Position position : Horse.Position.values()) {
-            int horPos = Horse.getTmpPosH();
-            int verPos = Horse.getTmpPosV();
+            horPos = Horse.getTmpPosH();
+            verPos = Horse.getTmpPosV();
             position.setPosition();
             if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
                 count++;
@@ -83,6 +87,7 @@ public class Decision {
     }
 
     public void hatTrick(Map<Integer, Integer> moves) {
+        // TODO: 24.02.2021 Вот эту кучу нужно разгрести сменить имя переменных и метода
         int move;
         for (Map.Entry<Integer, Integer> item : moves.entrySet()) {
             if (item.getValue().equals(Collections.min(moves.values()))) {

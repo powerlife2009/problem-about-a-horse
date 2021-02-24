@@ -3,7 +3,7 @@ package com.powerLife.myTask.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class SetHorse extends JDialog{
+public class SetHorse extends JDialog {
 
     private final JButton[][] chessBoard = new JButton[8][8];
 

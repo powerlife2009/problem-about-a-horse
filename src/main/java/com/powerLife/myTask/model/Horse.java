@@ -15,11 +15,6 @@ public class Horse {
     private int nowPosV;
 
 
-    public static void setTmpPos(int tmpPosH, int tmpPosV) {
-        setTmpPosH(tmpPosH);
-        setTmpPosV(tmpPosV);
-    }
-
     public static int getTmpPosH() {
         return tmpPosH;
     }
@@ -57,6 +52,11 @@ public class Horse {
         setNowPosV(v);
     }
 
+    public static void setTmpPos(int tmpPosH, int tmpPosV) {
+        setTmpPosH(tmpPosH);
+        setTmpPosV(tmpPosV);
+    }
+
     /**
      * Возвращает коня, на место после проверок
      */
@@ -71,7 +71,11 @@ public class Horse {
         setNowPos(getTmpPosH(), getTmpPosV());
     }
 
-
+    /**
+     * Стартовые позиции коню
+     * @param h по горизонтали
+     * @param v по вертикали
+     */
     public void setHorseOnStartPosition(int h, int v) {
         setNowPos(h, v);
         setTmpPos(h, v);
@@ -132,7 +136,7 @@ public class Horse {
             this.numberPos = numberPos;
         }
 
-        public static void go(int numberMove) {
+        public static void go(int numberMove) { // TODO: 24.02.2021 изменить имя метода
             for (Position position : values()) {
                 if (position.numberPos.equals(numberMove)) {
                     position.setPosition();
