@@ -71,17 +71,12 @@ public class MainView extends JFrame{
     }
 
     public void removeHorse(int h, int v) {
+
         squares[h][v].repaint();
         squares[h][v].revalidate();
         squares[h][v].removeAll();
         squares[h][v].setVisible(true);
 
-        squares[h][v] = new JPanel();
-        if ((h + v) % 2 == 0) {
-            squares[h][v].setBackground(Color.gray);
-        } else {
-            squares[h][v].setBackground(Color.white);
-        }
         setVisible(true);
     }
 
