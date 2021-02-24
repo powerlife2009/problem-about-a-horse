@@ -1,4 +1,4 @@
-package com.powerLife.myTask;
+package com.powerLife.myTask.app;
 
 import com.powerLife.myTask.controller.Controller;
 import com.powerLife.myTask.logic.Decision;

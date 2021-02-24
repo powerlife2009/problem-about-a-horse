@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 public class Decision {
 
     private final Field field;
@@ -29,23 +28,23 @@ public class Decision {
 
     public void goHorse() {
         Map<Integer, Integer> moveRecords = new HashMap<>();
-            for (Horse.Position position : Horse.Position.values()) {
-                position.setPosition();
-                if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
-                    moveRecords.put(position.getNumberPos(), numberOfFutureMoves());
-                }
-                horse.returnHorseOnNowPosition();
+        for (Horse.Position position : Horse.Position.values()) {
+            position.setPosition();
+            if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
+                moveRecords.put(position.getNumberPos(), numberOfFutureMoves());
             }
+            horse.returnHorseOnNowPosition();
+        }
 
-            hatTrick(moveRecords);
-            moveRecords.clear();
-            field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
-            field.show();
+        hatTrick(moveRecords);
+        moveRecords.clear();
+        field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
     }
 
     /**
      * Метод возвращает true если возможный ход находится в пределах поля,
      * и клетка не занималась ранее.
+     *
      * @param checkedHorPos горизонтальная позиция
      * @param checkedVerPos вертикальная позиция
      * @return true or false
@@ -78,7 +77,7 @@ public class Decision {
             if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
                 count++;
             }
-            Horse.setTmpPos(horPos,verPos);
+            Horse.setTmpPos(horPos, verPos);
         }
         return count;
     }

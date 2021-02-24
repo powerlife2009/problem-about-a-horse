@@ -71,6 +71,7 @@ public class Horse {
         setNowPos(getTmpPosH(), getTmpPosV());
     }
 
+
     public void setHorseOnStartPosition(int h, int v) {
         setNowPos(h, v);
         setTmpPos(h, v);
