@@ -3,18 +3,14 @@ package com.powerLife.myTask.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class SetHorse extends JDialog {
+public class SetHorse extends JWindow {
 
     private final JButton[][] chessBoard = new JButton[8][8];
 
-
     public SetHorse() {
-        setTitle("SetupHorse");
         setLayout(new GridLayout(8, 8));
         setBoard();
         setSize(280, 280);
-        setResizable(false);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -36,5 +32,4 @@ public class SetHorse extends JDialog {
     public JButton[][] getChessBoard() {
         return chessBoard;
     }
-
 }

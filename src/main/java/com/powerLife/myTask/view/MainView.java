@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class MainView extends JFrame {
 
-    private final JPanel genJPanel = new JPanel(new BorderLayout()); // TODO: 25.02.2021 переименовать 
+    private final JPanel mainJPanel = new JPanel(new BorderLayout());
     private final JToolBar tools = new JToolBar();
     private final JButton setHor = new JButton("Setup Horse");
     private final JButton start = new JButton("Start");
@@ -24,7 +24,7 @@ public class MainView extends JFrame {
     public void initView() {
         setToolBar();
         setBoard();
-        setGenJPanel();
+        setMainJPanel();
         setFrame();
     }
 
@@ -33,14 +33,14 @@ public class MainView extends JFrame {
         setSize(650, 650);
         setLocationRelativeTo(null);
         setResizable(false);
-        add(genJPanel);
+        add(mainJPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-    public void setGenJPanel() { // TODO: 25.02.2021 переименовать метод 
-        genJPanel.add(tools, BorderLayout.PAGE_START);
-        genJPanel.add(board);
+    public void setMainJPanel() {
+        mainJPanel.add(tools, BorderLayout.PAGE_START);
+        mainJPanel.add(board);
     }
 
     public void setBoard() {
@@ -100,6 +100,17 @@ public class MainView extends JFrame {
         setHor.setEnabled(true);
         stop.setEnabled(false);
         setVisible(true);
+    }
+
+    public void buttonActivityAtStart() {
+        setHor.setEnabled(false);
+        start.setEnabled(false);
+        stop.setEnabled(true);
+    }
+
+    public void buttonActivityAtStop() {
+        setHor.setEnabled(true);
+        stop.setEnabled(false);
     }
 
     public JButton getSetHor() {

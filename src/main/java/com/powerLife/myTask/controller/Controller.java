@@ -19,19 +19,19 @@ public class Controller {
     public Controller(Decision decision, MainView mainView) {
         this.decision = decision;
         this.mainView = mainView;
-        this.timer = new Timer(500, e -> eee());
+        this.timer = new Timer(500, e -> run());
     }
 
     public Decision getDecision() {
         return decision;
     }
 
-    public MainView getChess2() {
+    public MainView getMainView() {
         return mainView;
     }
 
-    public void run() {
-        timer.restart();
+    public Timer getTimer() {
+        return timer;
     }
 
     /**
@@ -62,12 +62,9 @@ public class Controller {
         mainView.getAbout().addActionListener(new AboutListener());
     }
 
-    public void eee() { // TODO: 22.02.2021 Придумать название для метода
-        mainView.getSetHor().setEnabled(false); // TODO: 24.02.2021 Слишком много SetEnabled вынести
-        mainView.getStart().setEnabled(false); // убрать
-        mainView.getStop().setEnabled(true); // убрать
+    public void run() {
+        mainView.buttonActivityAtStart();
         if (decision.getField().getQuantityCells() != 0) {
-
 
             mainView.markCell(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
 
@@ -76,14 +73,13 @@ public class Controller {
             mainView.setHorse(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
         } else {
             timer.stop();
-            mainView.getSetHor().setEnabled(true); // убрать
-            mainView.getStop().setEnabled(false); // убрать
+            mainView.buttonActivityAtStop();
         }
     }
 
     public void newBoard() {
+        timer.stop();                          // останавливаю визуализацию
         mainView.getNewBoard();                // получаю новое поле в VIEW
         decision.getField().resetField();      // очищаю клетки в FIELD
-        timer.stop();                          // останавливаю визуализацию
     }
 }

@@ -37,7 +37,6 @@ public class Decision {
             }
             horse.returnHorseOnNowPosition();
         }
-
         hatTrick(moveRecords);
         moveRecords.clear();
         field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
