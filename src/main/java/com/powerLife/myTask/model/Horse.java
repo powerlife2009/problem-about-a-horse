@@ -136,9 +136,9 @@ public class Horse {
             this.numberPos = numberPos;
         }
 
-        public static void go(int numberMove) { // TODO: 24.02.2021 изменить имя метода
+        public static void setFuturePosition(int numPos) {
             for (Position position : values()) {
-                if (position.numberPos.equals(numberMove)) {
+                if (position.numberPos.equals(numPos)) {
                     position.setPosition();
                 }
             }

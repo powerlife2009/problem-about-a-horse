@@ -12,16 +12,19 @@ public class MainView extends JFrame {
     private final JButton start = new JButton("Start");
     private final JButton stop = new JButton("Stop");
     private final JButton about = new JButton("About");
-    private final ImageIcon horse = new ImageIcon("src/main/resources/horse.png");
-    private final ImageIcon mark = new ImageIcon("src/main/resources/marker.png");
     private final JPanel board = new JPanel(new GridLayout(8, 8));
     private final JPanel[][] squares = new JPanel[8][8];
+    private ImageIcon horse;
+    private ImageIcon mark;
+    private ImageIcon icon;
+
 
     public MainView() {
         initView();
     }
 
     public void initView() {
+        setImages();
         setToolBar();
         setBoard();
         setMainJPanel();
@@ -29,7 +32,8 @@ public class MainView extends JFrame {
     }
 
     public void setFrame() {
-        setTitle("HorseGo");
+        setTitle("A knight's tour");
+        setIconImage(icon.getImage());
         setSize(650, 650);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -61,13 +65,19 @@ public class MainView extends JFrame {
         start.setEnabled(false);
         stop.setEnabled(false);
 
-        tools.setFloatable(false);
-
         tools.add(setHor);
         tools.add(start);
         tools.add(stop);
         tools.addSeparator();
         tools.add(about);
+        tools.setFloatable(false);
+    }
+
+    public void setImages() {
+        String s = System.getProperty("file.separator");
+        this.horse = new ImageIcon("src" + s + "main" + s + "resources" + s + "horse.png");
+        this.mark = new ImageIcon("src" + s + "main" + s + "resources" + s + "marker.png");
+        this.icon = new ImageIcon("src" + s + "main" + s + "resources" + s + "icon.png");
     }
 
     public void removeHorse(int h, int v) {
@@ -97,8 +107,7 @@ public class MainView extends JFrame {
                 board.add(squares[i][j]);
             }
         }
-        setHor.setEnabled(true);
-        stop.setEnabled(false);
+        buttonActivityAtStop();
         setVisible(true);
     }
 

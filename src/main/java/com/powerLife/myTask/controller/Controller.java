@@ -68,7 +68,7 @@ public class Controller {
 
             mainView.markCell(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
 
-            decision.goHorse();
+            decision.moveOfKnight();
 
             mainView.setHorse(decision.getHorse().getNowPosH(), decision.getHorse().getNowPosV());
         } else {
@@ -80,6 +80,6 @@ public class Controller {
     public void newBoard() {
         timer.stop();                          // останавливаю визуализацию
         mainView.getNewBoard();                // получаю новое поле в VIEW
-        decision.getField().resetField();      // очищаю клетки в FIELD
+        decision.getField().resetField();      // очищяю поле
     }
 }

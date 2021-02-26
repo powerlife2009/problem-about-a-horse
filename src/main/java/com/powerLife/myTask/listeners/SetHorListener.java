@@ -16,7 +16,7 @@ public class SetHorListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) { // TODO: 25.02.2021 Еще подумать
+    public void actionPerformed(ActionEvent e) {
         var setHorse = new SetHorse();
         controller.getMainView().setEnabled(false);
         for (int i = 0; i < 8; i++) {

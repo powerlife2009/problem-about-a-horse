@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class AboutView extends JDialog {
 
-    public AboutView() { // TODO: 24.02.2021 Реализовать содержимое окна
+    public AboutView() {
         JPanel jPanel = new JPanel();
 
         JLabel head = new JLabel("A knight's tour");
@@ -17,28 +17,34 @@ public class AboutView extends JDialog {
         JLabel textEn = new JLabel("<html><p align=\"center\">" +
                 "A knight's tour is a sequence of moves of a knight<</br>\n" +
                 "<br>on a chessboard such that the knight visits every</br>\n" +
-                "<br>square exactly once. If the knight ends on a square</br>\n" +
-                "<br>that is one knight's move from the beginning square</br>\n" +
-                "<br>(so that it could tour the board again immediately,</br>\n" +
-                "<br>following the same path), the tour is closed;</br>\n" +
-                "<br>otherwise, it is open.</br>\n" +
+                "<br>square exactly once.</br>" +
                 "<br>The knight's tour problem is the mathematical problem</br>\n" +
-                "<br>of finding a knight's tour. Creating a program to</br>\n" +
-                "<br>find a knight's tour is a common problem given to</br>\n" +
-                "<br>computer science students. Variations of the knight's</br>\n" +
-                "<br>tour problem involve chessboards of different sizes</br>\n" +
-                "<br>than the usual 8 × 8, as well as irregular</br>\n" +
-                "<br>(non-rectangular) boards.</br>\n" +
+                "<br>of finding a knight's tour.</br>" +
+                "<br>* * *</br>" +
+                "<br>This uses Warnsdorff's rule to calculate the next square </br>" +
+                "<br>each time. This specifies that the next square should be </br>" +
+                "<br>the one that has the least number of available moves.</br>" +
                 "</p></html>");
+        textEn.setBorder(BorderFactory.createEmptyBorder(40,10,10,10));
         textEn.setHorizontalAlignment(JLabel.CENTER);
         textEn.setForeground(Color.BLACK);
         textEn.setFont(new Font("Georgia", Font.BOLD, 13));
         jPanel.add(textEn);
 
+        JLabel author = new JLabel("<html><p align=\"center\">" +
+                "<br>-------------------------------------</br>" +
+                "<br>Author of this program: Vitaliy Chernykh</br>" +
+                "<br>vitaliy.200989@gmail.com</br></p></html>");
+        author.setBorder(BorderFactory.createEmptyBorder(30,10,10,10));
+        author.setHorizontalAlignment(JLabel.CENTER);
+        author.setForeground(Color.DARK_GRAY);
+        author.setFont(new Font("Georgia", Font.BOLD, 15));
+        jPanel.add(author);
+
         add(jPanel);
         setModal(true);
         setResizable(false);
-        setSize(500, 350);
+        setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
     }

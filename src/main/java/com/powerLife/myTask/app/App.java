@@ -9,9 +9,9 @@ public class App {
 
     public static void main(String[] args) {
 
-        var chess2 = new MainView();
+        var mainView = new MainView();
         var decision = new Decision();
-        var controller = new Controller(decision, chess2);
+        var controller = new Controller(decision, mainView);
         controller.initController();
 
     }

@@ -28,33 +28,25 @@ public class Decision {
         return horse;
     }
 
-    public void goHorse() {
-// TODO: 24.02.2021 очень не красиво, разгрести
-        for (Horse.Position position : Horse.Position.values()) {
-            position.setPosition();
-            if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
-                moveRecords.put(position.getNumberPos(), numberOfFutureMoves());
-            }
-            horse.returnHorseOnNowPosition();
-        }
-        hatTrick(moveRecords);
-        moveRecords.clear();
-        field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
+    public void moveOfKnight() {
+        enumOfMovesAndSaveInMemory();
+        moveSelection();
+        newPosForHorse();
     }
 
     /**
      * Метод возвращает true если возможный ход находится в пределах поля,
      * и клетка не занималась ранее.
      *
-     * @param checkedHorPos горизонтальная позиция
-     * @param checkedVerPos вертикальная позиция
+     * @param checkHorPos горизонтальная позиция
+     * @param checkVerPos вертикальная позиция
      * @return true or false
      */
-    public boolean threeIfCheck(int checkedHorPos, int checkedVerPos) {
+    public boolean threeIfCheck(int checkHorPos, int checkVerPos) {
         boolean check = false;
-        if (checkedHorPos >= 0 && checkedHorPos <= 7) {
-            if (checkedVerPos >= 0 && checkedVerPos <= 7) {
-                if (field.getField()[checkedHorPos][checkedVerPos] == 0) {
+        if (checkHorPos >= 0 && checkHorPos <= 7) {
+            if (checkVerPos >= 0 && checkVerPos <= 7) {
+                if (field.getField()[checkHorPos][checkVerPos] == 0) {
                     check = true;
                 }
             }
@@ -69,7 +61,7 @@ public class Decision {
      *
      * @return количество count
      */
-    public int numberOfFutureMoves() {
+    public int enumOfFutureMoves() {
         int horPos;
         int verPos;
         int count = 0;
@@ -85,17 +77,33 @@ public class Decision {
         return count;
     }
 
-    public void hatTrick(Map<Integer, Integer> moves) {
-        // TODO: 24.02.2021 Вот эту кучу нужно разгрести сменить имя переменных и метода
-        int move;
-        for (Map.Entry<Integer, Integer> item : moves.entrySet()) {
-            if (item.getValue().equals(Collections.min(moves.values()))) {
-                move = item.getKey();
-                Horse.Position.go(move);
-                horse.moveHorseOnNewPosition();
+    public void moveSelection() {
+        int numOfFuturePos;
+        for (Map.Entry<Integer, Integer> item : moveRecords.entrySet()) {
+            if (item.getValue().equals(Collections.min(moveRecords.values()))) {
+                numOfFuturePos = item.getKey();
+                Horse.Position.setFuturePosition(numOfFuturePos);
                 break;
             }
         }
+        moveRecords.clear();
+    }
+
+    public void enumOfMovesAndSaveInMemory() {
+        int numberOfFutureMoves;
+        for (Horse.Position position : Horse.Position.values()) {
+            position.setPosition();
+            if (threeIfCheck(Horse.getTmpPosH(), Horse.getTmpPosV())) {
+                numberOfFutureMoves = enumOfFutureMoves();
+                moveRecords.put(position.getNumberPos(), numberOfFutureMoves);
+            }
+            horse.returnHorseOnNowPosition();
+        }
+    }
+
+    public void newPosForHorse() {
+        horse.moveHorseOnNewPosition();
+        field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
     }
 }
 
