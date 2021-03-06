@@ -24,8 +24,8 @@ public class SetHorListener implements ActionListener {
                 int finalI = i;
                 int finalJ = j;
                 setHorse.getChessBoard()[i][j].addActionListener(e1 -> {
-                    controller.getMainView().removeHorse(controller.getDecision().getHorse().getNowPosH(),
-                            controller.getDecision().getHorse().getNowPosV());
+                    controller.getMainView().removeHorse(controller.getLogics().getHorse().getNowPosH(),
+                            controller.getLogics().getHorse().getNowPosV());
                     controller.getMainView().getStart().setEnabled(true);
                     controller.setHorseStartPosition(finalI, finalJ);
                     controller.setHorseOnBoard();

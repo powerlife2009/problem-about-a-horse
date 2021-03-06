@@ -136,6 +136,11 @@ public class Horse {
             this.numberPos = numberPos;
         }
 
+        /**
+         *  Данный метот по принятому номеру перемещения совершает изменения временных координат фигуры,
+         *  для будущего изменения постоянных её координат
+         * @param numPos номер позиции
+         */
         public static void setFuturePosition(int numPos) {
             for (Position position : values()) {
                 if (position.numberPos.equals(numPos)) {

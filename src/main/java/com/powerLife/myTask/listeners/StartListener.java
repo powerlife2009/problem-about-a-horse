@@ -15,6 +15,7 @@ public class StartListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        controller.getMainView().buttonActivityAtStart();
         controller.getTimer().restart();
     }
 }

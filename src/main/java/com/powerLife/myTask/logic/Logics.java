@@ -7,14 +7,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class Decision {
+public class Logics {
 
     private final Field field;
     private final Horse horse;
     private final Map<Integer, Integer> moveRecords;
 
-    public Decision() {
+    public Logics() {
         this.field = new Field();
         this.horse = new Horse();
         this.moveRecords = new HashMap<>();
@@ -28,6 +27,9 @@ public class Decision {
         return horse;
     }
 
+    /**
+     *  Метод вызываемый из контроллера, вся логика пееремещения фигуры здесь
+     */
     public void moveOfKnight() {
         enumOfMovesAndSaveInMemory();
         moveSelection();
@@ -77,6 +79,12 @@ public class Decision {
         return count;
     }
 
+    /**
+     * Метод работает с HashMap, итерируясь по ней, встретив ключ с минимальнм значением(Как предполагает Метод
+     * Варнсдорфа, который предполагает выбирать первый попавшийся ход у которого минимальное количество возможных
+     * ходов в будующем) передает его в метод setFuturePosition(numOfFuturePos).
+     * После этого HashMap стирает свое содержимое методом clear()
+     */
     public void moveSelection() {
         int numOfFuturePos;
         for (Map.Entry<Integer, Integer> item : moveRecords.entrySet()) {
@@ -89,6 +97,10 @@ public class Decision {
         moveRecords.clear();
     }
 
+    /**
+     * Здесь производится запись в HashMap номера возможного хода фигуры в качестве ключа, и количества возможных ходов
+     * в будующем в качестве значения. Каждый ход проверяется метдом threeIfCheck.
+     */
     public void enumOfMovesAndSaveInMemory() {
         int numberOfFutureMoves;
         for (Horse.Position position : Horse.Position.values()) {
@@ -101,6 +113,10 @@ public class Decision {
         }
     }
 
+    /**
+     * Присвоение фигуре новых постоянных координат, и вместе с этим клетка, на которой тепер находится конь,
+     * помечается как 1(запрещающая постановку фигуры в будущем)
+     */
     public void newPosForHorse() {
         horse.moveHorseOnNewPosition();
         field.occupyCell(horse.getNowPosH(), horse.getNowPosV());

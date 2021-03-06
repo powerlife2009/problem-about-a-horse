@@ -47,7 +47,7 @@ public class Field {
     }
 
     /**
-     * Новое чистое поле
+     * Новый массив [8][8] и количество не тронутых клеток 64
      */
     public void resetField() {
         this.field = new int[8][8];
