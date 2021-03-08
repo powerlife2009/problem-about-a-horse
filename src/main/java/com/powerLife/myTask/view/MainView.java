@@ -4,18 +4,17 @@ import com.powerLife.myTask.listeners.AboutListener;
 import com.powerLife.myTask.listeners.SetHorListener;
 import com.powerLife.myTask.listeners.StartListener;
 import com.powerLife.myTask.listeners.StopListener;
-import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
 @Component
-public class MainView extends JFrame implements ApplicationContextAware {
+public class MainView extends JFrame {
 
-    private ApplicationContext context;
+    private final ApplicationContext context;
     private final JPanel mainJPanel = new JPanel(new BorderLayout());
     private final JToolBar tools = new JToolBar();
     private final JButton setHor = new JButton("Setup Horse");
@@ -28,6 +27,10 @@ public class MainView extends JFrame implements ApplicationContextAware {
     private ImageIcon mark;
     private ImageIcon icon;
 
+    @Autowired
+    public MainView(ApplicationContext context) throws HeadlessException {
+        this.context = context;
+    }
 
     public void initView() {
         setImages();
@@ -89,6 +92,7 @@ public class MainView extends JFrame implements ApplicationContextAware {
 
     /**
      * Удаление фигуры с клетки
+     *
      * @param h по горизонтали
      * @param v по ветрикали
      */
@@ -101,6 +105,7 @@ public class MainView extends JFrame implements ApplicationContextAware {
 
     /**
      * Отображение фигуры в клетке
+     *
      * @param h по горизонтали
      * @param v по вертикали
      */
@@ -111,6 +116,7 @@ public class MainView extends JFrame implements ApplicationContextAware {
 
     /**
      * Отображение клетки, как ранее занимаемая фигурой
+     *
      * @param h по горизонтали
      * @param v по вертикали
      */
@@ -165,10 +171,5 @@ public class MainView extends JFrame implements ApplicationContextAware {
 
     public JButton getStart() {
         return start;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
     }
 }
