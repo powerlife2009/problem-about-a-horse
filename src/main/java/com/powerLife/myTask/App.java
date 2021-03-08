@@ -1,16 +1,16 @@
 package com.powerLife.myTask;
 
+import com.powerLife.myTask.config.ApplicationConfig;
 import com.powerLife.myTask.controller.Controller;
-import com.powerLife.myTask.logic.Logics;
-import com.powerLife.myTask.view.MainView;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 
 public class App {
 
     public static void main(String[] args) {
+        var context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
-        var mainView = new MainView();
-        var logics = new Logics();
-        var controller = new Controller(logics, mainView);
+        var controller = context.getBean(Controller.class);
         controller.launch();
     }
 }

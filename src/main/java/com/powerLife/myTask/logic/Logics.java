@@ -2,22 +2,27 @@ package com.powerLife.myTask.logic;
 
 import com.powerLife.myTask.model.Field;
 import com.powerLife.myTask.model.Horse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Logics {
 
     private final Field field;
     private final Horse horse;
     private final Map<Integer, Integer> moveRecords;
 
-    public Logics() {
-        this.field = new Field();
-        this.horse = new Horse();
+    @Autowired
+    public Logics(Field field, Horse horse) {
+        this.field = field;
+        this.horse = horse;
         this.moveRecords = new HashMap<>();
     }
+
 
     public Field getField() {
         return field;

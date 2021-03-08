@@ -1,18 +1,21 @@
 package com.powerLife.myTask.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class SetHorse extends JWindow {
 
     private final JButton[][] chessBoard = new JButton[8][8];
 
     public SetHorse() {
         setLayout(new GridLayout(8, 8));
-        setBoard();
         setSize(280, 280);
+        setBoard();
         setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     public void setBoard() {
@@ -32,4 +35,9 @@ public class SetHorse extends JWindow {
     public JButton[][] getChessBoard() {
         return chessBoard;
     }
+
+    public void initSetHorView() {
+        setVisible(true);
+    }
+
 }

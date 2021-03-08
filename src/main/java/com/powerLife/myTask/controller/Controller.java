@@ -1,26 +1,24 @@
 package com.powerLife.myTask.controller;
 
-import com.powerLife.myTask.listeners.AboutListener;
-import com.powerLife.myTask.listeners.SetHorListener;
-import com.powerLife.myTask.listeners.StartListener;
-import com.powerLife.myTask.listeners.StopListener;
 import com.powerLife.myTask.logic.Logics;
 import com.powerLife.myTask.view.MainView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 
-
+@Component
 public class Controller {
 
     private final Logics logics;
     private final MainView mainView;
     private final Timer timer;
 
+    @Autowired
     public Controller(Logics decision, MainView mainView) {
         this.logics = decision;
         this.mainView = mainView;
         this.timer = new Timer(500, e -> run());
-        initListeners();
     }
 
     public Logics getLogics() {
@@ -54,16 +52,6 @@ public class Controller {
     public void setHorseOnBoard() {
         logics.getField().occupyCell(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
         mainView.setHorse(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
-    }
-
-    /**
-     * Инициализация слушателей кнопок
-     */
-    public void initListeners() {
-        mainView.getStart().addActionListener(new StartListener(this));
-        mainView.getSetHor().addActionListener(new SetHorListener(this));
-        mainView.getStop().addActionListener(new StopListener(this));
-        mainView.getAbout().addActionListener(new AboutListener());
     }
 
     /**

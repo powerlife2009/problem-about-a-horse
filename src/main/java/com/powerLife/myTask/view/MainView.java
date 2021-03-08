@@ -1,11 +1,21 @@
 package com.powerLife.myTask.view;
 
+import com.powerLife.myTask.listeners.AboutListener;
+import com.powerLife.myTask.listeners.SetHorListener;
+import com.powerLife.myTask.listeners.StartListener;
+import com.powerLife.myTask.listeners.StopListener;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 
+@Component
+public class MainView extends JFrame implements ApplicationContextAware {
 
-public class MainView extends JFrame {
-
+    private ApplicationContext context;
     private final JPanel mainJPanel = new JPanel(new BorderLayout());
     private final JToolBar tools = new JToolBar();
     private final JButton setHor = new JButton("Setup Horse");
@@ -25,6 +35,7 @@ public class MainView extends JFrame {
         setBoard();
         setMainJPanel();
         setFrame();
+        initListeners();
     }
 
     public void setFrame() {
@@ -142,19 +153,22 @@ public class MainView extends JFrame {
         stop.setEnabled(false);
     }
 
-    public JButton getSetHor() {
-        return setHor;
+    /**
+     * Инициализация слушателей кнопок
+     */
+    public void initListeners() {
+        start.addActionListener(context.getBean(StartListener.class));
+        setHor.addActionListener(context.getBean(SetHorListener.class));
+        stop.addActionListener(context.getBean(StopListener.class));
+        about.addActionListener(context.getBean(AboutListener.class));
     }
 
     public JButton getStart() {
         return start;
     }
 
-    public JButton getStop() {
-        return stop;
-    }
-
-    public JButton getAbout() {
-        return about;
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

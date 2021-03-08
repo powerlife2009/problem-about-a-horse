@@ -1,8 +1,11 @@
 package com.powerLife.myTask.view;
 
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class AboutView extends JDialog {
 
     public AboutView() {
@@ -25,7 +28,7 @@ public class AboutView extends JDialog {
                 "<br>each time. This specifies that the next square should be </br>" +
                 "<br>the one that has the least number of available moves.</br>" +
                 "</p></html>");
-        textEn.setBorder(BorderFactory.createEmptyBorder(40,10,10,10));
+        textEn.setBorder(BorderFactory.createEmptyBorder(40, 10, 10, 10));
         textEn.setHorizontalAlignment(JLabel.CENTER);
         textEn.setForeground(Color.BLACK);
         textEn.setFont(new Font("Georgia", Font.BOLD, 13));
@@ -35,7 +38,7 @@ public class AboutView extends JDialog {
                 "<br>-------------------------------------</br>" +
                 "<br>Author of this program: Vitaliy Chernykh</br>" +
                 "<br>vitaliy.200989@gmail.com</br></p></html>");
-        author.setBorder(BorderFactory.createEmptyBorder(30,10,10,10));
+        author.setBorder(BorderFactory.createEmptyBorder(30, 10, 10, 10));
         author.setHorizontalAlignment(JLabel.CENTER);
         author.setForeground(Color.DARK_GRAY);
         author.setFont(new Font("Georgia", Font.BOLD, 15));
@@ -46,6 +49,9 @@ public class AboutView extends JDialog {
         setResizable(false);
         setSize(500, 400);
         setLocationRelativeTo(null);
+    }
+
+    public void initAboutView() {
         setVisible(true);
     }
 }

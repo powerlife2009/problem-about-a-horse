@@ -1,5 +1,8 @@
 package com.powerLife.myTask.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Horse {
 
     /**
