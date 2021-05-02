@@ -1,7 +1,7 @@
 # Overview
 
 #### I present to your attention!<br>
-## Solution of the legendary knight's move problem with Varnsdorf's rule using OOP, built on the MVC architecture and a little Spring.
+## Solution of the legendary knight's move problem with Varnsdorf's rule using Abstract data types, built on the MVC architecture and a little Spring.
 
 > The task is to go around all the squares of the chessboard with the knight, 
 > occupying each of them exactly once
