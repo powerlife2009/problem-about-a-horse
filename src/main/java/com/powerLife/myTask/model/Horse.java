@@ -50,7 +50,7 @@ public class Horse {
         this.nowPosV = nowVerPos;
     }
 
-    public void setNowPos(int h, int v) {
+    private void setNowPos(int h, int v) {
         setNowPosH(h);
         setNowPosV(v);
     }
@@ -152,7 +152,7 @@ public class Horse {
             }
         }
 
-        public Integer getNumberPos() {
+        public int getNumberPos() {
             return numberPos;
         }
 

@@ -41,7 +41,7 @@ public class MainView extends JFrame {
         initListeners();
     }
 
-    public void setFrame() {
+    private void setFrame() {
         setTitle("A knight's tour");
         setIconImage(icon.getImage());
         setSize(650, 650);
@@ -52,12 +52,12 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
-    public void setMainJPanel() {
+    private void setMainJPanel() {
         mainJPanel.add(tools, BorderLayout.PAGE_START);
         mainJPanel.add(board);
     }
 
-    public void setBoard() {
+    private void setBoard() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 squares[i][j] = new JPanel();
@@ -71,7 +71,7 @@ public class MainView extends JFrame {
         }
     }
 
-    public void setToolBar() {
+    private void setToolBar() {
         start.setEnabled(false);
         stop.setEnabled(false);
 
@@ -83,7 +83,7 @@ public class MainView extends JFrame {
         tools.setFloatable(false);
     }
 
-    public void setImages() {
+    private void setImages() {
         String s = System.getProperty("file.separator");
         this.horse = new ImageIcon("src" + s + "main" + s + "resources" + s + "horse.png");
         this.mark = new ImageIcon("src" + s + "main" + s + "resources" + s + "marker.png");
@@ -162,7 +162,7 @@ public class MainView extends JFrame {
     /**
      * Инициализация слушателей кнопок
      */
-    public void initListeners() {
+    private void initListeners() {
         start.addActionListener(context.getBean(StartListener.class));
         setHor.addActionListener(context.getBean(SetHorListener.class));
         stop.addActionListener(context.getBean(StopListener.class));
