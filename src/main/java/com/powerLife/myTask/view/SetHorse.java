@@ -45,7 +45,8 @@ public class SetHorse extends JWindow {
     public void setHorseOnCell(int h, int v) {
         chessBoard[h][v].addActionListener(e -> {
             controller.newBoard();
-            mainView.removeHorse(controller.getLogics().nowHorsePositionH(),
+            mainView.removeHorse(
+                    controller.getLogics().nowHorsePositionH(),
                     controller.getLogics().nowHorsePositionV());
             mainView.setStartButtonActivity(true);
             controller.setHorseStartPosition(h, v);

@@ -25,12 +25,8 @@ public class Controller {
         return logic;
     }
 
-    public MainView getMainView() {
-        return mainView;
-    }
-
-    public Timer getTimer() {
-        return timer;
+    public void restartTimer() {
+        timer.restart();
     }
 
     /**
