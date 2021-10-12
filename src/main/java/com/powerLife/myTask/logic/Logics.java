@@ -23,8 +23,9 @@ public class Logics {
         this.moveRecords = new HashMap<>();
     }
 
-    public void removeHorse() {
-        field.resetField();
+
+    public Field getField() {
+        return field;
     }
 
     public Horse getHorse() {
@@ -124,26 +125,6 @@ public class Logics {
     public void newPosForHorse() {
         horse.moveHorseOnNewPosition();
         field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
-    }
-
-    public void setHorseOnStartPosition(int h, int v) {
-        horse.setHorseOnStartPosition(h, v);
-    }
-
-    public void occupyCell() {
-        field.occupyCell(horse.getNowPosH(), horse.getNowPosV());
-    }
-
-    public int nowHorsePositionH() {
-        return horse.getNowPosH();
-    }
-
-    public int nowHorsePositionV() {
-        return horse.getNowPosV();
-    }
-
-    public int quantityCellsOnField() {
-        return field.getQuantityCells();
     }
 }
 
