@@ -35,21 +35,6 @@ public class Field {
     }
 
     /**
-     * Освобождает клетку на поле, обозначая её как 0. Вместе
-     * с этим увеличивая количество свободных клеток
-     * Проверка, на выход за пределы количества
-     * @param h по горизонтали
-     * @param v по вертикали
-     */
-    public void removeHorse(int h, int v) {
-        if(this.quantityCells < 64) {
-            this.quantityCells++;
-        }
-        this.field[h][v] = 0;
-
-    }
-
-    /**
      * Новый массив [8][8] и количество не тронутых клеток 64
      */
     public void resetField() {

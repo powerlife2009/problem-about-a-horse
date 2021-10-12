@@ -10,19 +10,19 @@ import javax.swing.*;
 @Component
 public class Controller {
 
-    private final Logics logics;
+    private final Logics logic;
     private final MainView mainView;
     private final Timer timer;
 
     @Autowired
     public Controller(Logics decision, MainView mainView) {
-        this.logics = decision;
+        this.logic = decision;
         this.mainView = mainView;
         this.timer = new Timer(500, e -> run());
     }
 
     public Logics getLogics() {
-        return logics;
+        return logic;
     }
 
     public MainView getMainView() {
@@ -41,8 +41,8 @@ public class Controller {
      * @param v по вертикали
      */
     public void setHorseStartPosition(int h, int v) {
-        logics.getField().removeHorse(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
-        logics.getHorse().setHorseOnStartPosition(h, v);
+        logic.removeHorse();
+        logic.setHorseOnStartPosition(h, v);
     }
 
     /**
@@ -50,8 +50,8 @@ public class Controller {
      * затем устанавливаю коня на поле в VIEW
      */
     public void setHorseOnBoard() {
-        logics.getField().occupyCell(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
-        mainView.setHorse(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
+        logic.occupyCell();
+        mainView.setHorse(logic.nowHorsePositionH(), logic.nowHorsePositionV());
     }
 
     /**
@@ -60,13 +60,13 @@ public class Controller {
      * Запускается при нажатии на кнопку старт, и работает в таймере(Swing).
      */
     public void run() {
-        if (logics.getField().getQuantityCells() != 0) {
+        if (logic.quantityCellsOnField() != 0) {
             // Установка маркера на настоящую позицию фигуры в представлении
-            mainView.markCell(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
+            mainView.markCell(logic.nowHorsePositionH(), logic.nowHorsePositionV());
             // Вычисление новой позиции для фигуры
-            logics.moveOfKnight();
+            logic.moveOfKnight();
             // Установка label фигуры на новую позицию в представлении
-            mainView.setHorse(logics.getHorse().getNowPosH(), logics.getHorse().getNowPosV());
+            mainView.setHorse(logic.nowHorsePositionH(), logic.nowHorsePositionV());
         } else {
             timer.stop();
             mainView.buttonActivityAtStop();
@@ -80,7 +80,7 @@ public class Controller {
     public void newBoard() {
         timer.stop();
         mainView.getNewBoard();
-        logics.getField().resetField();
+        logic.removeHorse();
     }
 
     public void launch() {
