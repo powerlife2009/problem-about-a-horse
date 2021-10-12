@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 @Component
 public class MainView extends JFrame {
@@ -84,7 +85,7 @@ public class MainView extends JFrame {
     }
 
     private void setImages() {
-        String s = System.getProperty("file.separator");
+        String s = File.separator;
         this.horse = new ImageIcon("src" + s + "main" + s + "resources" + s + "horse.png");
         this.mark = new ImageIcon("src" + s + "main" + s + "resources" + s + "marker.png");
         this.icon = new ImageIcon("src" + s + "main" + s + "resources" + s + "icon.png");
@@ -163,13 +164,16 @@ public class MainView extends JFrame {
      * Инициализация слушателей кнопок
      */
     private void initListeners() {
+        start.addActionListener(e -> {
+
+        });
         start.addActionListener(context.getBean(StartListener.class));
         setHor.addActionListener(context.getBean(SetHorListener.class));
         stop.addActionListener(context.getBean(StopListener.class));
         about.addActionListener(context.getBean(AboutListener.class));
     }
 
-    public JButton getStart() {
-        return start;
+    public void setStartButtonActivity(boolean active) {
+        start.setEnabled(active);
     }
 }
