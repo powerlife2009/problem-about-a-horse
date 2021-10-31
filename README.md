@@ -1,21 +1,19 @@
 # Overview
 
-#### I present to your attention!<br>
-## Solution of the legendary knight's move problem with Varnsdorf's rule using Abstract data types, built on the MVC architecture and a little Spring.
+#### Представляю вашему вниманию!<br>
+## Решение легендарной проблемы хода коня с правилом Варнсдорфа с использованием абстрактных типов данных, построенное на архитектуре MVC и немного Spring.
 
-> The task is to go around all the squares of the chessboard with the knight, 
-> occupying each of them exactly once
+> Задача состоит в том, чтобы обойти конем все клетки шахматной доски,
+> заняв каждую из них ровно один раз.
 > 
-> There are different ways to find the following
-> different routes of the knight, but the simplest and most effective
-> is still the Varnsdorf rule, invented
-> century and a half ago: on each move the horse should
-> occupy the field from which it can make the least
-> number of jumps to the not yet passed fields.
-> As a result, the horse will safely complete the journey
-> through all 64 fields of the board
+> Существуют разные способы нахождения следующих разными маршрутами коня, 
+> но самым простым и эффективным остается правило Варнсдорфа, придуманное полтора века назад:
+> на каждом ходу конь должен занимать то поле, с которого он может сделать наименьшее количество 
+> прыжков на еще не пройденные поля. В результате конь благополучно завершит путешествие 
+> по всем 64 полям доски
+
 
 # Screenshots
 ![animation](https://user-images.githubusercontent.com/73959785/115727634-76464e00-a38c-11eb-8356-94a34b0680dd.gif)
 # Conclusion
-The development of this application gave me an understanding of how objects interact with each other, and what is the MVC architecture. 
+Разработка этого приложения дала мне понимание того, как объекты взаимодействуют друг с другом, и что такое архитектура MVC. 
