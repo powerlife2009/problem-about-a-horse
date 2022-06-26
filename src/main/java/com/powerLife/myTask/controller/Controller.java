@@ -29,32 +29,16 @@ public class Controller {
         timer.restart();
     }
 
-    /**
-     * Удаляю коня с поля, присваивая клетке значение 0 и увеличивая количество свободных клеток,
-     * затем присваиваю коню новые позиции
-     *
-     * @param h по горизонтали
-     * @param v по вертикали
-     */
     public void setHorseStartPosition(int h, int v) {
         logic.removeHorse();
         logic.setHorseOnStartPosition(h, v);
     }
 
-    /**
-     * Занимаю клетку на поле, присваивая ей значение 1,
-     * затем устанавливаю коня на поле в VIEW
-     */
     public void setHorseOnBoard() {
         logic.occupyCell();
         mainView.setHorse(logic.nowHorsePositionH(), logic.nowHorsePositionV());
     }
 
-    /**
-     * Данный Метод осуществляет взаимодействие логики и представления (в виде перемещения фигуры).
-     * Метод не запустится, если количество свободных клеток = 0.
-     * Запускается при нажатии на кнопку старт, и работает в таймере(Swing).
-     */
     public void run() {
         if (logic.quantityCellsOnField() != 0) {
             // Установка маркера на настоящую позицию фигуры в представлении
@@ -69,10 +53,6 @@ public class Controller {
         }
     }
 
-    /**
-     * При нажатии кнопки stop производится остановка таймера визуализации,
-     * отображение нового поля в окне(view) и сброс данных о клетках (model)
-     */
     public void newBoard() {
         timer.stop();
         mainView.getNewBoard();

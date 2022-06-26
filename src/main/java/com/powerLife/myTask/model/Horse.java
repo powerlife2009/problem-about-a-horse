@@ -5,15 +5,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Horse {
 
-    /**
-     * Временные статические переменные, для поиска верного хода
-     */
     private static int tmpPosH;
     private static int tmpPosV;
 
-    /**
-     * Позиции на которых находится конь
-     */
     private int nowPosH;
     private int nowPosV;
 
@@ -60,25 +54,14 @@ public class Horse {
         setTmpPosV(tmpPosV);
     }
 
-    /**
-     * Возвращает коня, на место после проверок
-     */
     public void returnHorseOnNowPosition() {
         setTmpPos(getNowPosH(),getNowPosV());
     }
 
-    /**
-     * Перемещает коня на новое место
-     */
     public void moveHorseOnNewPosition() {
         setNowPos(getTmpPosH(), getTmpPosV());
     }
 
-    /**
-     * Стартовые позиции коню
-     * @param h по горизонтали
-     * @param v по вертикали
-     */
     public void setHorseOnStartPosition(int h, int v) {
         setNowPos(h, v);
         setTmpPos(h, v);
@@ -139,11 +122,6 @@ public class Horse {
             this.numberPos = numberPos;
         }
 
-        /**
-         *  Данный метод по принятому номеру перемещения совершает изменения временных координат фигуры,
-         *  для будущего изменения постоянных её координат
-         * @param numPos номер позиции
-         */
         public static void setFuturePosition(int numPos) {
             for (Position position : values()) {
                 if (position.numberPos.equals(numPos)) {

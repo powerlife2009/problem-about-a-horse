@@ -91,12 +91,6 @@ public class MainView extends JFrame {
         this.icon = new ImageIcon("src" + s + "main" + s + "resources" + s + "icon.png");
     }
 
-    /**
-     * Удаление фигуры с клетки
-     *
-     * @param h по горизонтали
-     * @param v по ветрикали
-     */
     public void removeHorse(int h, int v) {
         squares[h][v].repaint();
         squares[h][v].revalidate();
@@ -104,32 +98,17 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
-    /**
-     * Отображение фигуры в клетке
-     *
-     * @param h по горизонтали
-     * @param v по вертикали
-     */
     public void setHorse(int h, int v) {
         squares[h][v].add(new JLabel(horse));
         setVisible(true);
     }
 
-    /**
-     * Отображение клетки, как ранее занимаемая фигурой
-     *
-     * @param h по горизонтали
-     * @param v по вертикали
-     */
     public void markCell(int h, int v) {
         squares[h][v].removeAll();
         squares[h][v].add(new JLabel(mark));
         setVisible(true);
     }
 
-    /**
-     * Получение нового поля
-     */
     public void getNewBoard() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -143,30 +122,18 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
-    /**
-     * Меняет активность кнопок на панели при старте алгоритма
-     */
     public void buttonActivityAtStart() {
         setHor.setEnabled(false);
         start.setEnabled(false);
         stop.setEnabled(true);
     }
 
-    /**
-     * Меняет активность кнопок на панели при остановке алгоритма
-     */
     public void buttonActivityAtStop() {
         setHor.setEnabled(true);
         stop.setEnabled(false);
     }
 
-    /**
-     * Инициализация слушателей кнопок
-     */
     private void initListeners() {
-        start.addActionListener(e -> {
-
-        });
         start.addActionListener(context.getBean(StartListener.class));
         setHor.addActionListener(context.getBean(SetHorListener.class));
         stop.addActionListener(context.getBean(StopListener.class));
