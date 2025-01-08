@@ -1,7 +1,7 @@
-package com.powerLife.myTask.controller;
+package com.horse.problem.controller;
 
-import com.powerLife.myTask.logic.Logics;
-import com.powerLife.myTask.view.MainView;
+import com.horse.problem.logic.Logics;
+import com.horse.problem.view.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

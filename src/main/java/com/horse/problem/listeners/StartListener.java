@@ -1,7 +1,7 @@
-package com.powerLife.myTask.listeners;
+package com.horse.problem.listeners;
 
-import com.powerLife.myTask.controller.Controller;
-import com.powerLife.myTask.view.MainView;
+import com.horse.problem.controller.Controller;
+import com.horse.problem.view.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

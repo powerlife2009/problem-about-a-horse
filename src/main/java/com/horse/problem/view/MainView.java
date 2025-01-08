@@ -1,9 +1,9 @@
-package com.powerLife.myTask.view;
+package com.horse.problem.view;
 
-import com.powerLife.myTask.listeners.AboutListener;
-import com.powerLife.myTask.listeners.SetHorListener;
-import com.powerLife.myTask.listeners.StartListener;
-import com.powerLife.myTask.listeners.StopListener;
+import com.horse.problem.listeners.AboutListener;
+import com.horse.problem.listeners.SetHorListener;
+import com.horse.problem.listeners.StartListener;
+import com.horse.problem.listeners.StopListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;

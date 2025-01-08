@@ -1,4 +1,4 @@
-package com.powerLife.myTask.model;
+package com.horse.problem.model;
 
 import org.springframework.stereotype.Component;
 

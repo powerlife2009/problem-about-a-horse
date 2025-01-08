@@ -1,7 +1,7 @@
-package com.powerLife.myTask.logic;
+package com.horse.problem.logic;
 
-import com.powerLife.myTask.model.Field;
-import com.powerLife.myTask.model.Horse;
+import com.horse.problem.model.Field;
+import com.horse.problem.model.Horse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
-package com.powerLife.myTask;
+package com.horse.problem;
 
-import com.powerLife.myTask.config.ApplicationConfig;
-import com.powerLife.myTask.controller.Controller;
+import com.horse.problem.config.ApplicationConfig;
+import com.horse.problem.controller.Controller;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 

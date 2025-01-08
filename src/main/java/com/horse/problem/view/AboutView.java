@@ -1,4 +1,4 @@
-package com.powerLife.myTask.view;
+package com.horse.problem.view;
 
 import org.springframework.stereotype.Component;
 
